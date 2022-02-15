@@ -30,7 +30,7 @@ $ git remote add <your repo name!>
 
 ## Submission
 
-1. Upon completion, run the following commands:
+1. Upon completion, run the following commands: 
 
 ```bash
 $ git add .
