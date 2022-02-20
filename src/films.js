@@ -82,7 +82,7 @@ function orderByYear(array) {
   })
   //Limitamos el array a 20 elementos
   let orderFilmByYearMax20 = orderFilmByYear.slice(0,20);
-  console.log("EXERCICE 5 orderFilmByYear ->",orderFilmByYearMax20);
+  //onsole.log("EXERCICE 5 orderFilmByYear ->",orderFilmByYearMax20);
   return orderFilmByYearMax20;
 }
 function moviesAverage(data){
@@ -94,7 +94,7 @@ function moviesAverage(data){
   let sum = cleanData.reduce((a,b)=>a+b.score,0)
   //sacamos media y devolvemos resultado
   let result = sum/size;
-  console.log("EXERCICE 6 result ->",parseFloat(result.toFixed(2)));
+  //console.log("EXERCICE 6 result ->",parseFloat(result.toFixed(2)));
   return parseFloat(result.toFixed(2))
 }
 // Exercise 6: Calculate the average of the movies in a category
@@ -103,13 +103,27 @@ function moviesAverageByCategory(array, category) {
   let filmsCategory = array.filter((datos)=>datos.genre.toString()===category.toString())
   //console.log("EXERCICE 6 peliculas ->",peliculas);
   return moviesAverage(filmsCategory)
-
 }
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+    let timeConverion = array.map(function callback(data){
+    let horas = data.duration.slice(0,1)*60
+    if(isNaN(horas)===true){horas = 0}
+    //console.log("Horas -> ",horas)
+    let minutes = parseFloat(data.duration.slice(3,5))
+    if(isNaN(minutes)===true){minutes = 0}
+    //console.log("Minutes -> ",minutes)
+    let sum = horas+minutes;
+    //console.log("sum -> ",sum)
+    data.duration = sum;
+    return data;
+  })
+  console.log("EXERCICE 7 timeConverion ->",timeConverion);
+  console.log("EXERCICE 7 Array Original ->",array);
 
+  return timeConverion;
 }
 
 // Exercise 8: Get the best film of a year
